@@ -2,7 +2,7 @@ from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 import os
 from dotenv import load_dotenv
-from supabase import create_client, Client
+from supabase import create_client
 
 load_dotenv()
 
@@ -11,8 +11,7 @@ CORS(app)
 
 supabase_url = os.getenv("SUPABASE_URL")
 supabase_key = os.getenv("SUPABASE_ANON_KEY")
-supabase: Client = create_client(supabase_url, supabase_key)
-
+supabase = create_client(supabase_url, supabase_key)
 
 @app.route("/")
 def index():
@@ -156,3 +155,4 @@ def get_line_chart_data():
 if __name__ == "__main__":
     port = int(os.getenv("FLASK_PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
+
