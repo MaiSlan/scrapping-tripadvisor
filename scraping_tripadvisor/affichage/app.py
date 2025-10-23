@@ -25,7 +25,7 @@ def get_restaurants():
     try:
         result = supabase.table("restaurant").select("*").order("ville").execute()
         # FIX: Safely retrieve 'data' from the result dictionary (new SDK)
-        restaurants = result.get("data") or []  
+        restaurants = result.data or []  
         return jsonify(restaurants), 200
     except Exception as e:
         # Fallback for any other exceptions during the process
@@ -38,7 +38,7 @@ def get_kpis():
     try:
         result = supabase.table("restaurant").select("*").execute()
         # FIX: Safely retrieve 'data' from the result dictionary (new SDK)
-        restaurants = result.get("data") or [] 
+        restaurants = result.data or [] 
 
         kpis = {}
         # The loop is now safe even if restaurants is empty
@@ -82,7 +82,7 @@ def get_bubble_chart_data():
     try:
         result = supabase.table("restaurant").select("*").execute()
         # FIX: Safely retrieve 'data' from the result dictionary (new SDK)
-        restaurants = result.get("data") or [] 
+        restaurants = result.data or [] 
 
         city_data = {}
         for r in restaurants:
@@ -118,7 +118,7 @@ def get_pie_chart_data():
     try:
         result = supabase.table("restaurant").select("*").execute()
         # FIX: Safely retrieve 'data' from the result dictionary (new SDK)
-        restaurants = result.get("data") or [] 
+        restaurants = result.data or [] 
 
         city_counts = {}
         for r in restaurants:
@@ -140,7 +140,7 @@ def get_line_chart_data():
     try:
         result = supabase.table("restaurant").select("*").execute()
         # FIX: Safely retrieve 'data' from the result dictionary (new SDK)
-        restaurants = result.get("data") or [] 
+        restaurants = result.data or [] 
 
         city_data = {}
         for r in restaurants:
@@ -166,3 +166,4 @@ def get_line_chart_data():
 if __name__ == "__main__":
     port = int(os.getenv("FLASK_PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
+
