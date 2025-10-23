@@ -18,5 +18,5 @@ EXPOSE 5000
 
 WORKDIR /app/scraping_tripadvisor/affichage
 
-CMD ["gunicorn", "--bind", "0.0.0.0:${PORT}", "--workers", "2", "app:app"]
+CMD gunicorn --bind 0.0.0.0:$PORT --workers 2 app:app
 
