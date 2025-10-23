@@ -82,8 +82,10 @@
     </table>
 
     <script>
+        const API_BASE_URL = window.location.origin;
+
         // Chargement des données pour les restaurants
-        fetch('http://127.0.0.1:5000/api/restaurants')
+        fetch(`${API_BASE_URL}/api/restaurants`)
             .then(response => response.json())
             .then(data => {
                 const table = document.getElementById('restaurant-table');
@@ -105,7 +107,7 @@
             .catch(error => console.error('Erreur:', error));
 
         // Chargement des KPIs
-        fetch('http://127.0.0.1:5000/api/kpis')
+        fetch(`${API_BASE_URL}/api/kpis`)
             .then(response => response.json())
             .then(data => {
                 const table = document.getElementById('kpi-table');
@@ -153,7 +155,7 @@
             .catch(error => console.error('Erreur:', error));
 
         // Bubble Chart
-        fetch('http://127.0.0.1:5000/api/bubble-chart')
+        fetch(`${API_BASE_URL}/api/bubble-chart`)
             .then(response => response.json())
             .then(data => {
                 const bubbleData = data.map(item => ({
@@ -181,7 +183,7 @@
             .catch(error => console.error('Erreur:', error));
 
         // Pie Chart
-        fetch('http://127.0.0.1:5000/api/pie-chart')
+        fetch(`${API_BASE_URL}/api/pie-chart`)
             .then(response => response.json())
             .then(data => {
                 const villes = data.map(item => item.ville);
@@ -218,7 +220,7 @@
             .catch(error => console.error('Erreur:', error));
 
         // Line Chart
-        fetch('http://127.0.0.1:5000/api/line-chart')
+        fetch(`${API_BASE_URL}/api/line-chart`)
             .then(response => response.json())
             .then(data => {
                 const villes = data.map(item => item.ville);
