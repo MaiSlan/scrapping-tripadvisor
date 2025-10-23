@@ -31,7 +31,7 @@ def get_restaurants():
         # Fallback for any other exceptions during the process
         return jsonify({"error": str(e)}), 500
 
----
+#---
 
 @app.route("/api/kpis", methods=["GET"])
 def get_kpis():
@@ -75,7 +75,7 @@ def get_kpis():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
----
+#---
 
 @app.route("/api/bubble-chart", methods=["GET"])
 def get_bubble_chart_data():
@@ -111,7 +111,7 @@ def get_bubble_chart_data():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
----
+#---
 
 @app.route("/api/pie-chart", methods=["GET"])
 def get_pie_chart_data():
@@ -133,7 +133,7 @@ def get_pie_chart_data():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
----
+#---
 
 @app.route("/api/line-chart", methods=["GET"])
 def get_line_chart_data():
